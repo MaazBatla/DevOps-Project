@@ -1,25 +1,27 @@
 #!/bin/bash
 
-# Update and install packages
+# Update and install necessary packages
 sudo yum update -y
 sudo yum install -y git docker curl
-sudo amazon-linux-extras enable nginx1
-sudo yum install -y nginx python3-certbot-nginx
+sudo amazon-linux-extras enable nginx1 -y
+sudo amazon-linux-extras enable epel -y
+sudo yum install -y epel-release
+sudo yum install -y nginx python2-certbot-nginx
 
-# Start and enable services
+# Start and enable Docker and Nginx
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
-# Add ec2-user to docker group
+# Add ec2-user to Docker group
 sudo usermod -aG docker ec2-user
 
-# Pull and run Metabase
+# Pull and run Metabase on port 3000
 sudo docker pull metabase/metabase
 sudo docker run -d -p 3000:3000 --name metabase metabase/metabase
 
-# NGINX reverse proxy config
+# Nginx reverse proxy configuration
 cat <<EOF | sudo tee /etc/nginx/conf.d/metabase.conf
 server {
     listen 80;
@@ -36,6 +38,7 @@ server {
 }
 EOF
 
-# Restart and secure with Certbot
-sudo nginx -t && sudo systemctl restart nginx
-sudo certbot --nginx -d maaz-bi.devopsagent.online --non-interactive --agree-tos -m maazarsalan@outlook.com --redirect
+# Reload Nginx and request SSL certificate
+sudo nginx -t && sudo systemctl reload nginx
+
+# sudo certbot --nginx -d maaz-bi.devopsagent.online
