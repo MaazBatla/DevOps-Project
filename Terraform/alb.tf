@@ -30,6 +30,38 @@ resource "aws_lb_listener" "https" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.app_target_group.arn
+    target_group_arn = aws_lb_target_group.app1_tg.arn
+  }
+}
+
+resource "aws_lb_listener_rule" "app2_rule" {
+  listener_arn = aws_lb_listener.https.arn
+  priority     = 100
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app2_tg.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/app2*"]
+    }
+  }
+}
+
+resource "aws_lb_listener_rule" "bi_rule" {
+  listener_arn = aws_lb_listener.https.arn
+  priority     = 200
+
+  action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.bi_tg.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/bi*"]
+    }
   }
 }

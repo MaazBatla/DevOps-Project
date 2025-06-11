@@ -28,7 +28,7 @@ route53_zone_id    = "Z09717712PWRD7XOA245F"
 domain_name        = "devopsagent.online"
 
 # ACM Certificate ARN
-acm_cert_arn = "arn:aws:acm:us-east-1:762233738809:certificate/98dd4efd-91c1-4b9f-a900-db18f37f9409"
+acm_cert_arn = "arn:aws:acm:us-east-1:762233738809:certificate/1f467e39-09cc-47b2-86b9-ccf3fd15f5ea"
 
 # Variables for SSL and Nginx Configuration
 ssl_email = "maazarsalan@outlook.com"  # Replace with your email address

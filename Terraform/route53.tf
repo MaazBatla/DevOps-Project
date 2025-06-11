@@ -1,6 +1,6 @@
 resource "aws_route53_record" "app" {
   zone_id = var.route53_zone_id
-  name    = var.domain_name
+  name    = "devopsagent.online"
   type    = "A"
 
   alias {
