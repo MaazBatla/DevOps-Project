@@ -1,0 +1,12 @@
+INSERT INTO analytics (user_id, user_name, email, country, product, quantity, price, total, created_at)
+VALUES
+(1, 'Alice', 'alice@example.com', 'USA', 'Laptop', 1, 1200.00, 1200.00, NOW() - INTERVAL '10 days'),
+(2, 'Bob', 'bob@example.com', 'UK', 'Smartphone', 2, 500.00, 1000.00, NOW() - INTERVAL '9 days'),
+(3, 'Charlie', 'charlie@example.com', 'Canada', 'Tablet', 1, 300.00, 300.00, NOW() - INTERVAL '8 days'),
+(4, 'Diana', 'diana@example.com', 'Germany', 'Monitor', 3, 200.00, 600.00, NOW() - INTERVAL '7 days'),
+(5, 'Ethan', 'ethan@example.com', 'India', 'Laptop', 1, 1100.00, 1100.00, NOW() - INTERVAL '6 days'),
+(6, 'Fay', 'fay@example.com', 'USA', 'Keyboard', 5, 40.00, 200.00, NOW() - INTERVAL '5 days'),
+(7, 'George', 'george@example.com', 'UK', 'Mouse', 4, 25.00, 100.00, NOW() - INTERVAL '4 days'),
+(8, 'Hannah', 'hannah@example.com', 'France', 'Headphones', 2, 150.00, 300.00, NOW() - INTERVAL '3 days'),
+(9, 'Ivan', 'ivan@example.com', 'USA', 'Webcam', 1, 90.00, 90.00, NOW() - INTERVAL '2 days'),
+(10, 'Jill', 'jill@example.com', 'Canada', 'Laptop', 2, 950.00, 1900.00, NOW() - INTERVAL '1 day');

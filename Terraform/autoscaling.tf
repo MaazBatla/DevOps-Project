@@ -7,7 +7,7 @@ resource "aws_autoscaling_group" "app1_asg" {
     id      = aws_launch_template.app1.id
     version = "$Latest"
   }
-  target_group_arns = [aws_lb_target_group.app1_tg.arn]
+  target_group_arns = [aws_lb_target_group.app_target_group.arn]
 }
 
 resource "aws_autoscaling_group" "app2_asg" {
@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "app2_asg" {
     id      = aws_launch_template.app2.id
     version = "$Latest"
   }
-  target_group_arns = [aws_lb_target_group.app2_tg.arn]
+  target_group_arns = [aws_lb_target_group.app_target_group.arn]
 }
 
 resource "aws_autoscaling_group" "bi_asg" {
@@ -31,5 +31,5 @@ resource "aws_autoscaling_group" "bi_asg" {
     id      = aws_launch_template.bi.id
     version = "$Latest"
   }
-  target_group_arns = [aws_lb_target_group.bi_tg.arn]
+  target_group_arns = [aws_lb_target_group.bi_target_group.arn]
 }

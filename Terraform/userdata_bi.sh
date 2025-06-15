@@ -4,9 +4,7 @@
 sudo yum update -y
 sudo yum install -y git docker curl
 sudo amazon-linux-extras enable nginx1 -y
-sudo amazon-linux-extras enable epel -y
-sudo yum install -y epel-release
-sudo yum install -y nginx python2-certbot-nginx
+sudo yum install -y nginx 
 
 # Start and enable Docker and Nginx
 sudo systemctl enable docker
@@ -40,5 +38,3 @@ EOF
 
 # Reload Nginx and request SSL certificate
 sudo nginx -t && sudo systemctl reload nginx
-
-# sudo certbot --nginx -d maaz-bi.devopsagent.online

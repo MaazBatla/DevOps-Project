@@ -1,0 +1,27 @@
+DO $$
+DECLARE
+  i INT;
+  quantity INT;
+  price NUMERIC;
+BEGIN
+  FOR i IN 11..60 LOOP
+    quantity := 1 + floor(random() * 5)::INT;
+    price := 100 + floor(random() * 1000)::NUMERIC;
+
+    INSERT INTO analytics (
+      user_id, user_name, email, country, product, quantity, price, total, created_at
+    )
+    VALUES (
+      i,
+      CONCAT('User', i),
+      CONCAT('user', i, '@example.com'),
+      (ARRAY['USA', 'UK', 'Canada', 'India', 'Germany'])[1 + floor(random() * 5)::INT],
+      (ARRAY['Laptop', 'Tablet', 'Phone', 'Monitor', 'Keyboard'])[1 + floor(random() * 5)::INT],
+      quantity,
+      price,
+      quantity * price,
+      NOW() - (random() * interval '10 days')
+    );
+  END LOOP;
+END;
+$$;
